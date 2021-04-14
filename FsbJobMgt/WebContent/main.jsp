@@ -90,7 +90,13 @@ function setTable(){
         columns : [
 			{data: null },
             {data: "BZWR_TTL" },
-            {data: "BZWR_STS" },
+            {data: "BZWR_STS", render : function ( data, type, row, meta ) {
+            	if(data=="01"){
+            		return '진행중';
+            	}else{
+            		return '완료';
+            	}
+            }},
             {data: "BZWR_INDC_CHGR_TXT" },
             {data: "BZWR_EXC_CHGR_TXT" },
             {data: "BZWR_REG_DT" },
@@ -102,7 +108,7 @@ function setTable(){
                 return '<button name="second_btn" class="btn btn-sm btn-default">확인</button>'
             }}
         ],
-        columnDefs: [{ className: 'text-center', targets: [-1,-2] }],
+        columnDefs: [{ className: 'text-center', targets: [0,2,3,4,5,6,7,8] }],
         order: [[ 1, 'asc' ]]
     } );
 	
@@ -247,7 +253,7 @@ function updateJob(){
 				<th>처리상태</th>
 				<td>
 					<select id="BZWR_STS_2" class="form-control input-sm" disabled>
-					    <option value="01">진행</option>
+					    <option value="01">진행중</option>
 					    <option value="02">완료</option>
 					</select>
 				</td>
