@@ -261,31 +261,63 @@ function updateJob(){
 	<hr/>
 	<!-- 상세 -->
 	<div>
-		<table class="table table-sm table-bordered display" style="text-align:center;">
+		<table class="table table-bordered table-sm display" style="text-align:center;">
 			<tr>
-				<th width="10%">지시자</th>
-				<td id="BZWR_INDC_CHGR" width="10%"></td>
-				<th width="10%">담당자</th>
-				<td width="10%">
+				<th scope="col" width="10%">지시자</th>
+				<td scope="col" id="BZWR_INDC_CHGR" width="10%"></td>
+				<th scope="col" width="10%">담당자</th>
+				<td scope="col" width="10%">
 					<span id="BZWR_EXC_CHGR"></span>
 					<button id="BZWR_EXC_CHGR_BTN" class="btn btn-sm btn-info" style="display:none">선택</button>
 				</td>
-				<th width="10%">처리상태</th>
-				<td width="10%">
+				<th scope="col" width="10%">처리상태</th>
+				<td scope="col" width="10%">
 					<select id="BZWR_STS_2" class="form-control input-sm" disabled>
 					    <option value="01">진행중</option>
 					    <option value="02">완료</option>
 					</select>
 				</td>
-				<td></td>
+				<td scope="col"></td>
 			</tr>
 			<tr>
-				<th>제목</th><td colspan="6"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
+				<th scope="row">제목</th><td colspan="6"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
 			</tr>
 			<tr>
-				<th>내용</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
+				<th scope="row">내용</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
 			</tr>
 		</table>
+	</div>
+	
+	<div>
+	<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 	</div>
 </div>
 </body>
