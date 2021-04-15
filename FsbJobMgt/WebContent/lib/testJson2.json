@@ -2,7 +2,7 @@
   "data": [
     {
       "BZWR_DSTC": "1",
-      "JOB_CD": "",
+      "JOB_CD": "20210410123456",
       "SQNO": "1",
       "BZWR_STS": "01",
       "BZWR_REG_DT": "2021-04-10",
@@ -16,7 +16,7 @@
     },
     {
       "BZWR_DSTC": "1",
-      "JOB_CD": "",
+      "JOB_CD": "20210410153215",
       "SQNO": "2",
       "BZWR_STS": "01",
       "BZWR_REG_DT": "2021-04-10",
@@ -30,7 +30,7 @@
     },
     {
       "BZWR_DSTC": "1",
-      "JOB_CD": "",
+      "JOB_CD": "20210410095031",
       "SQNO": "3",
       "BZWR_STS": "02",
       "BZWR_REG_DT": "2021-04-10",

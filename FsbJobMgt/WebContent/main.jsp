@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ include file="/modal1_Adding.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,7 +79,7 @@ $(document).ready(function() {
 /* 테이블 데이터 로딩 및 기능 세팅 */
 function setTable(){
 	/* 테이블 데이터 로딩 */
-	var jobList = $('#job_list').DataTable( {
+	let jobList = $('#job_list').DataTable( {
         ajax : {
         	url : 'lib/testJson2.json',
         	data : { 
@@ -152,14 +154,18 @@ function setTable(){
 	
 	/* 테이블 버튼 이벤트(담당자입력) */
 	$('#job_list tbody').on( 'click', 'button[name="first_btn"]', function () {
-        var data = jobList.row( $(this).parents('tr') ).data();
-		console.log("First Button",data);
+        let data = jobList.row( $(this).parents('tr') ).data();
+		//console.log("First Button",data);
+		setData(data);
+		$('#exampleModal').modal();
     } );
 	
 	/* 테이블 버튼 이벤트(전체진행상황) */
 	$('#job_list tbody').on( 'click', 'button[name="second_btn"]', function () {
-        var data = jobList.row( $(this).parents('tr') ).data();
-		console.log("Second Button",data);
+        let data = jobList.row( $(this).parents('tr') ).data();
+		//console.log("Second Button",data);
+        setData(data);
+		$('#exampleModalCenter').modal();
     } );
 }
 
@@ -197,7 +203,7 @@ function updateJob(){
 			BZWR_CNTN:$('#BZWR_CNTN').val() //업무내용
 		},
 		success:function(data){
-			alert('등록 되었습니다.');
+			alert('변경 되었습니다.');
 	   }
 	})
 }
