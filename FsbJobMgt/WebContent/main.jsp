@@ -125,14 +125,15 @@ function setTable(){
 	/* 테이블 클릭 이벤트  -> 클릭한 row에 해당하는 데이터를 상세 정보에 보여줌*/
 	$('#job_list tbody').on('click', 'td:nth-child(-n+7)', function () {
 		let data = jobList.row( this ).data();
-        console.log(data);
+        console.log('Table Click Event',data);
+       	
 		if($('#REQUEST_TYPE').val()!='2'){ //"구분-등록" 상태면 반응 없음.
 	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //지시자
 	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //담당자
 	        $('#BZWR_STS_2').val(data.BZWR_STS); //처리상태(업무상태)
 	        $('#BZWR_TTL').val(data.BZWR_TTL); //제목
-	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //내용  
-	        if(data.BZWR_STS=='02'){
+	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //내용 
+	        if($('#REQUEST_TYPE').val()=='1' || data.BZWR_STS=='02'){
 	        	$('#BZWR_EXC_CHGR_BTN').hide();
 				$('#BZWR_STS_2').attr("disabled",true);
 				$('#BZWR_TTL').attr("disabled",true);
@@ -156,7 +157,7 @@ function setTable(){
 	$('#job_list tbody').on( 'click', 'button[name="first_btn"]', function () {
         let data = jobList.row( $(this).parents('tr') ).data();
 		//console.log("First Button",data);
-		setData(data);
+		setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
 		$('#exampleModal').modal();
     } );
 	
@@ -164,7 +165,7 @@ function setTable(){
 	$('#job_list tbody').on( 'click', 'button[name="second_btn"]', function () {
         let data = jobList.row( $(this).parents('tr') ).data();
 		//console.log("Second Button",data);
-        setData(data);
+        setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
 		$('#exampleModalCenter').modal();
     } );
 }
@@ -220,9 +221,9 @@ function updateJob(){
 			    <option value="3">변경</option>
 			</select>
 			<label style="font-weight:bold">조회기간&nbsp;</label>
-			<input type="date" id="FROM_DATE" style="width:140px" value=""/>
+			<input type="date" id="FROM_DATE" style="width:145px" value=""/>
 			<label style="font-weight:bold">~&nbsp;</label>
-			<input type="date" id="TO_DATE" value=""  style="margin-right:25px;width:140px"/>
+			<input type="date" id="TO_DATE" value=""  style="margin-right:25px;width:145px"/>
 			<label style="font-weight:bold;">처리상태&nbsp;</label>
 			<select id="BZWR_STS" style="margin-right:25px">
 			    <option value="01">진행</option>
