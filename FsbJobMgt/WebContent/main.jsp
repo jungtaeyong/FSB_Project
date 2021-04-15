@@ -43,6 +43,7 @@ $(document).ready(function() {
 			createNewJob();
 		}else if(dvcd=='3'){
 			alert('변경');
+			updateJob();
 		}
 	});
 
@@ -89,11 +90,11 @@ function setTable(){
         },
         columns : [
 			{data: null },
-            {data: "BZWR_TTL" },
+			{data: "BZWR_TTL" },
             {data: "BZWR_STS", render : function ( data, type, row, meta ) {
             	if(data=="01"){
             		return '진행중';
-            	}else{
+            	}else if(data=="02"){
             		return '완료';
             	}
             }},
@@ -121,14 +122,25 @@ function setTable(){
 	
 	/* 테이블 클릭 이벤트  -> 클릭한 row에 해당하는 데이터를 상세 정보에 보여줌*/
 	$('#job_list tbody').on('click', 'td:nth-child(-n+7)', function () {
+		let data = jobList.row( this ).data();
+        console.log(data);
 		if($('#REQUEST_TYPE').val()!='2'){ //"구분-등록" 상태면 반응 없음.
-			var data = jobList.row( this ).data();
-	        console.log(data);
 	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //지시자
 	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //담당자
 	        $('#BZWR_STS_2').val(data.BZWR_STS); //처리상태(업무상태)
 	        $('#BZWR_TTL').val(data.BZWR_TTL); //제목
 	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //내용  
+	        if(data.BZWR_STS=='02'){
+	        	$('#BZWR_EXC_CHGR_BTN').hide();
+				$('#BZWR_STS_2').attr("disabled",true);
+				$('#BZWR_TTL').attr("disabled",true);
+				$('#BZWR_CNTN').attr("disabled",true);
+	        }else{
+	        	$('#BZWR_EXC_CHGR_BTN').show();
+				$('#BZWR_STS_2').removeAttr("disabled");
+				$('#BZWR_TTL').removeAttr("disabled");
+				$('#BZWR_CNTN').removeAttr("disabled");
+	        }
 		}
     } );
 	
