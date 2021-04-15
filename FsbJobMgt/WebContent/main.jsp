@@ -71,6 +71,7 @@ $(document).ready(function() {
 			$('#BZWR_STS_2').removeAttr("disabled");
 			$('#BZWR_TTL').removeAttr("disabled");
 			$('#BZWR_CNTN').removeAttr("disabled");
+			alert('변경할 데이터를 선택해주세요.');
 		}
 	});
 
@@ -260,28 +261,29 @@ function updateJob(){
 	<hr/>
 	<!-- 상세 -->
 	<div>
-		<table class="table table-bordered display">
+		<table class="table table-sm table-bordered display" style="text-align:center;">
 			<tr>
-				<th>지시자</th>
-				<td id="BZWR_INDC_CHGR"></td>
-				<th>담당자</th>
-				<td>
+				<th width="10%">지시자</th>
+				<td id="BZWR_INDC_CHGR" width="10%"></td>
+				<th width="10%">담당자</th>
+				<td width="10%">
 					<span id="BZWR_EXC_CHGR"></span>
 					<button id="BZWR_EXC_CHGR_BTN" class="btn btn-sm btn-info" style="display:none">선택</button>
 				</td>
-				<th>처리상태</th>
-				<td>
+				<th width="10%">처리상태</th>
+				<td width="10%">
 					<select id="BZWR_STS_2" class="form-control input-sm" disabled>
 					    <option value="01">진행중</option>
 					    <option value="02">완료</option>
 					</select>
 				</td>
+				<td></td>
 			</tr>
 			<tr>
-				<th>제목</th><td colspan="5"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
+				<th>제목</th><td colspan="6"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
 			</tr>
 			<tr>
-				<th>내용</th><td colspan="5"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
+				<th>내용</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
 			</tr>
 		</table>
 	</div>
