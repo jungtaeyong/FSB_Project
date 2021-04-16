@@ -83,6 +83,7 @@ function setTable(){
 	let jobList = $('#job_list').DataTable( {
         ajax : {
         	url : 'lib/testJson2.json',
+        	type : 'POST',
         	data : { 
         		REQUEST_TYPE:$('#REQUEST_TYPE').val(),
         		FROM_DATE:$('#FROM_DATE').val(), 
@@ -114,8 +115,7 @@ function setTable(){
         ],
         columnDefs: [{ className: 'text-center', targets: [0,2,3,4,5,6,7,8] }],
         order: [[ 1, 'asc' ]]
-    } );
-	
+    });
 	/* 테이블 Index 생성을 위한 함수 */
 	jobList.on( 'order.dt search.dt', function () {
 		jobList.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
@@ -272,7 +272,7 @@ function updateJob(){
 				</td>
 				<th scope="col" width="10%">처리상태</th>
 				<td scope="col" width="10%">
-					<select id="BZWR_STS_2" class="form-control input-sm" disabled>
+					<select id="BZWR_STS_2" class="form-control" disabled>
 					    <option value="01">진행중</option>
 					    <option value="02">완료</option>
 					</select>
@@ -286,38 +286,6 @@ function updateJob(){
 				<th scope="row">내용</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
 			</tr>
 		</table>
-	</div>
-	
-	<div>
-	<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
 	</div>
 </div>
 </body>
