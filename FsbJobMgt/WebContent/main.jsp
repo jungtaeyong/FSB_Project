@@ -142,7 +142,7 @@ function loadTableData(){
     		BZWR_STS:$('#BZWR_STS').val(),
     		BZWR_DSTC:$('#BZWR_DSTC').val()
     };
-	//console.log('sendData',sendData);
+	console.log('sendData',sendData);
 	return jobList = $('#job_list').DataTable( {
         ajax : {
         	url : 'lib/testJson2.json',
@@ -178,10 +178,7 @@ function loadTableData(){
 	
 /* 등록 */
 function createNewJob(){
-	$.ajax({
-		url:'',
-		dataType:'application/json',
-		data : { 
+	let sendData = { 
 			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //구분(조회,등록,변경)
 			BZWR_DSTC:$('#BZWR_DSTC').val(), //업무구분
 			BZWR_INDC_CHGR:'로그인 유저', //업무지시담당자
@@ -189,7 +186,12 @@ function createNewJob(){
 			BZWR_STS:'1', //업무상태 (등록 시 진행으로 세팅)
 			BZWR_TTL:$('#BZWR_TTL').val(), //업무제목
 			BZWR_CNTN:$('#BZWR_CNTN').val() //업무내용
-		},
+		};
+	console.log('sendData',sendData);
+	$.ajax({
+		url:'',
+		dataType:'application/json',
+		data : sendData,
 		success:function(data){
 			alert('등록 되었습니다.');
 	   }
@@ -199,21 +201,27 @@ function createNewJob(){
 
 /* 변경 */
 function updateJob(){
-	$.ajax({
-		url:'',
-		dataType:'application/json',
-		data : { 
+	let sendData = { 
 			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //구분(조회,등록,변경)
 			BZWR_DSTC:$('#BZWR_DSTC').val(), //업무구분
 			BZWR_EXC_CHGR:'담당자', //업무수행담당자
 			BZWR_STS:$('#BZWR_STS_2').val(), //업무상태
 			BZWR_TTL:$('#BZWR_TTL').val(), //업무제목
 			BZWR_CNTN:$('#BZWR_CNTN').val() //업무내용
-		},
-		success:function(data){
-			alert('변경 되었습니다.');
-	   }
-	})
+		};
+	console.log('sendData',sendData);
+	if(sendData.BZWR_STS=='02'){ //완료된 업무인 경우 변경 불가
+		alert('이미 완료된 업무입니다.');
+	}else{
+		$.ajax({
+			url:'',
+			dataType:'application/json',
+			data : sendData,
+			success:function(data){
+				alert('변경 되었습니다.');
+		   }
+		})
+	}
 }
 </script>
 <div class="container" style="margin-top:30px">
