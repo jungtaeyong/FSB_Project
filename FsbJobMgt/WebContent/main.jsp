@@ -32,19 +32,74 @@ $(document).ready(function() {
 	document.getElementById('TO_DATE').valueAsDate = new Date(); //TO_DATE
 	
 	/* 테이블 초기 로딩 */
-	setTable();
+	let jobList = loadTableData();
+	
+	/* 테이블 Index 생성을 위한 함수 */
+	jobList.on( 'order.dt search.dt', function () {
+		jobList.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	        cell.innerHTML = i+1;
+	    } );
+	} ).draw();
+
+	/* 테이블 클릭 이벤트  -> 클릭한 row에 해당하는 데이터를 상세 정보에 보여줌*/
+	$('#job_list tbody').on('click', 'td:nth-child(-n+7)', function () {
+		let data = jobList.row( this ).data();
+	    console.log('Table Click Event',data);
+	   	
+		if($('#REQUEST_TYPE').val()!='2'){ //"구분-등록" 상태면 반응 없음.
+	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //지시자
+	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //담당자
+	        $('#BZWR_STS_2').val(data.BZWR_STS); //처리상태(업무상태)
+	        $('#BZWR_TTL').val(data.BZWR_TTL); //제목
+	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //내용 
+	        if($('#REQUEST_TYPE').val()=='1' || data.BZWR_STS=='02'){
+	        	$('#BZWR_EXC_CHGR_BTN').hide();
+				$('#BZWR_STS_2').attr("disabled",true);
+				$('#BZWR_TTL').attr("disabled",true);
+				$('#BZWR_CNTN').attr("disabled",true);
+	        }else{
+	        	$('#BZWR_EXC_CHGR_BTN').show();
+				$('#BZWR_STS_2').removeAttr("disabled");
+				$('#BZWR_TTL').removeAttr("disabled");
+				$('#BZWR_CNTN').removeAttr("disabled");
+	        }
+		}
+	} );
+
+	/* 선택된  row 하이라이트 */
+	$('#job_list tbody').on('click', 'tr', function() {
+		$('#job_list tbody > tr').css('background-color','#ffffff');
+		$(this).css('background-color','#f0f5f5');
+	});
+
+	/* 테이블 버튼 이벤트(담당자입력) */
+	$('#job_list tbody').on( 'click', 'button[name="first_btn"]', function () {
+	    let data = jobList.row( $(this).parents('tr') ).data();
+		//console.log("First Button",data);
+		setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
+		$('#exampleModal').modal();
+	} );
+
+	/* 테이블 버튼 이벤트(전체진행상황) */
+	$('#job_list tbody').on( 'click', 'button[name="second_btn"]', function () {
+	    let data = jobList.row( $(this).parents('tr') ).data();
+		//console.log("Second Button",data);
+	    setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
+		$('#exampleModalCenter').modal();
+	} );
+	
 	
 	/* 송신버튼 */
 	$('#action_submit').click(function(){
 		let dvcd = $('#REQUEST_TYPE').val();
 		if(dvcd=='1'){
-			alert('조회');
-			setTable();
+			console.log('조회');
+			loadTableData();
 		}else if(dvcd=='2'){
-			alert('등록');
+			console.log('등록');
 			createNewJob();
 		}else if(dvcd=='3'){
-			alert('변경');
+			console.log('변경');
 			updateJob();
 		}
 	});
@@ -77,20 +132,22 @@ $(document).ready(function() {
 
 } );
 
-/* 테이블 데이터 로딩 및 기능 세팅 */
-function setTable(){
-	/* 테이블 데이터 로딩 */
-	let jobList = $('#job_list').DataTable( {
+
+function loadTableData(){
+	/* 테이블 데이터 로딩 및 세팅 */
+	let sendData = {
+    		REQUEST_TYPE:$('#REQUEST_TYPE').val(),
+    		FROM_DATE:$('#FROM_DATE').val(), 
+    		TO_DATE:$('#TO_DATE').val(),
+    		BZWR_STS:$('#BZWR_STS').val(),
+    		BZWR_DSTC:$('#BZWR_DSTC').val()
+    };
+	//console.log('sendData',sendData);
+	return jobList = $('#job_list').DataTable( {
         ajax : {
         	url : 'lib/testJson2.json',
         	type : 'POST',
-        	data : { 
-        		REQUEST_TYPE:$('#REQUEST_TYPE').val(),
-        		FROM_DATE:$('#FROM_DATE').val(), 
-        		TO_DATE:$('#TO_DATE').val(),
-        		BZWR_STS:$('#BZWR_STS').val(),
-        		BZWR_DSTC:$('#BZWR_DSTC').val()
-        	}
+        	data : sendData
         },
         columns : [
 			{data: null },
@@ -116,61 +173,9 @@ function setTable(){
         columnDefs: [{ className: 'text-center', targets: [0,2,3,4,5,6,7,8] }],
         order: [[ 1, 'asc' ]]
     });
-	/* 테이블 Index 생성을 위한 함수 */
-	jobList.on( 'order.dt search.dt', function () {
-		jobList.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-    } ).draw();
-	
-	/* 테이블 클릭 이벤트  -> 클릭한 row에 해당하는 데이터를 상세 정보에 보여줌*/
-	$('#job_list tbody').on('click', 'td:nth-child(-n+7)', function () {
-		let data = jobList.row( this ).data();
-        console.log('Table Click Event',data);
-       	
-		if($('#REQUEST_TYPE').val()!='2'){ //"구분-등록" 상태면 반응 없음.
-	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //지시자
-	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //담당자
-	        $('#BZWR_STS_2').val(data.BZWR_STS); //처리상태(업무상태)
-	        $('#BZWR_TTL').val(data.BZWR_TTL); //제목
-	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //내용 
-	        if($('#REQUEST_TYPE').val()=='1' || data.BZWR_STS=='02'){
-	        	$('#BZWR_EXC_CHGR_BTN').hide();
-				$('#BZWR_STS_2').attr("disabled",true);
-				$('#BZWR_TTL').attr("disabled",true);
-				$('#BZWR_CNTN').attr("disabled",true);
-	        }else{
-	        	$('#BZWR_EXC_CHGR_BTN').show();
-				$('#BZWR_STS_2').removeAttr("disabled");
-				$('#BZWR_TTL').removeAttr("disabled");
-				$('#BZWR_CNTN').removeAttr("disabled");
-	        }
-		}
-    } );
-	
-	/* 선택된  row 하이라이트 */
-	$('#job_list tbody').on('click', 'tr', function() {
-		$('#job_list tbody > tr').css('background-color','#ffffff');
-		$(this).css('background-color','#f0f5f5');
-	});
-	
-	/* 테이블 버튼 이벤트(담당자입력) */
-	$('#job_list tbody').on( 'click', 'button[name="first_btn"]', function () {
-        let data = jobList.row( $(this).parents('tr') ).data();
-		//console.log("First Button",data);
-		setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
-		$('#exampleModal').modal();
-    } );
-	
-	/* 테이블 버튼 이벤트(전체진행상황) */
-	$('#job_list tbody').on( 'click', 'button[name="second_btn"]', function () {
-        let data = jobList.row( $(this).parents('tr') ).data();
-		//console.log("Second Button",data);
-        setData(data); //모달 페이지로 데이터를 전달하기 위한 함수
-		$('#exampleModalCenter').modal();
-    } );
 }
 
+	
 /* 등록 */
 function createNewJob(){
 	$.ajax({
@@ -191,6 +196,7 @@ function createNewJob(){
 	})
 }
 
+
 /* 변경 */
 function updateJob(){
 	$.ajax({
@@ -209,7 +215,6 @@ function updateJob(){
 	   }
 	})
 }
-
 </script>
 <div class="container" style="margin-top:30px">
 	<!-- 조회 조건 -->
