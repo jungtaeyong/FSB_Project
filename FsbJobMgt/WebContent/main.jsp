@@ -9,16 +9,16 @@
 </head>
 <body>
 <!-- jquery  -->
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="lib/Bootstrap-4-4.1.1/css/bootstrap.min.css"/>
-<script type="text/javascript" src="lib/Bootstrap-4-4.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/lib/Bootstrap-4-4.1.1/css/bootstrap.min.css"/>
+<script type="text/javascript" src="resources/lib/Bootstrap-4-4.1.1/js/bootstrap.min.js"></script>
 
 <!-- datatables -->
-<link rel="stylesheet" type="text/css" href="lib/DataTables-1.10.24/css/dataTables.bootstrap4.min.css"/>
-<script type="text/javascript" src="lib/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="lib/DataTables-1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/lib/DataTables-1.10.24/css/dataTables.bootstrap4.min.css"/>
+<script type="text/javascript" src="resources/lib/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="resources/lib/DataTables-1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
 $(document).ready(function() {
 	/* 초기 조회 조건 세팅 */
@@ -145,7 +145,7 @@ function loadTableData(){
 	console.log('sendData',sendData);
 	return jobList = $('#job_list').DataTable( {
         ajax : {
-        	url : 'lib/testJson2.json',
+        	url : 'resources/lib/testJson2.json',
         	type : 'POST',
         	data : sendData
         },

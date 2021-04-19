@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- jquery  -->
-	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
 	
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="lib/Bootstrap-4-4.1.1/css/bootstrap.min.css"/>
-	<script type="text/javascript" src="lib/Bootstrap-4-4.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/lib/Bootstrap-4-4.1.1/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="resources/lib/Bootstrap-4-4.1.1/js/bootstrap.min.js"></script>
 	
 
 
