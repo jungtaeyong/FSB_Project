@@ -149,6 +149,7 @@ function loadTableData(){
         	type : 'POST',
         	data : sendData
         },
+        responsive: true,
         columns : [
 			{data: null },
 			{data: "BZWR_TTL" },
@@ -255,7 +256,7 @@ function updateJob(){
 	<hr/>
 	<!-- 목록 -->	
 	<div>
-		<table id="job_list" class="table table-sm table-bordered">
+		<table id="job_list" class="table table-sm responsive table-bordered" width="100%">
 	        <thead>
 	            <tr>
 	            	<th>No</th>
@@ -274,7 +275,7 @@ function updateJob(){
 	<hr/>
 	<!-- 상세 -->
 	<div>
-		<table class="table table-bordered table-sm display" style="text-align:center;">
+		<table class="table table-bordered table-sm display nowrap" style="text-align:center;">
 			<tr>
 				<th scope="col" width="10%">지시자</th>
 				<td scope="col" id="BZWR_INDC_CHGR" width="10%"></td>
