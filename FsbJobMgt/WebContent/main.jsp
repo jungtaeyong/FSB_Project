@@ -146,7 +146,7 @@ function loadTableData(){
 	return jobList = $('#job_list').DataTable( {
         ajax : {
         	url : 'resources/lib/testJson2.json',
-        	type : 'POST',
+        	type : 'GET',
         	data : sendData
         },
         responsive: true,
