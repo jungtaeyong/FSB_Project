@@ -1,1 +1,49 @@
-https://docs.google.com/spreadsheets/d/1XMYqNZidZi2hR0ui3vH4Lt-NzNEt5KxatgssTN8L-Lo/edit#gid=0
+(명환) https://docs.google.com/spreadsheets/d/1XMYqNZidZi2hR0ui3vH4Lt-NzNEt5KxatgssTN8L-Lo/edit#gid=0 
+
+
+
+(동률) 팝업 (Modal) API 
+
+  필요 API 2개 ("TRANS" 테이블 참고)
+
+  1) 조회 - (지시현황 팝업)
+
+  [GET]
+  ex) ~/log/(todo_pk)
+
+  "{
+    ""data"": [
+      {
+        "업무지시담당자(BZWR_INDC_CHGR)": "OOO부장",
+        "업무수행담당자": "OOO팀장",
+        "업무수행상태": "진행",
+        "처리제목": "IFIS 전환",
+        "최초등록타임스탬프": "20210401"
+      },
+      {
+        "업무지시담당자(BZWR_INDC_CHGR)": "OOO팀장",
+        "업무수행담당자": "OOO사원",
+        "업무수행상태": "진행",
+        "처리제목": "IFIS 전환",
+        "최초등록타임스탬프": "20210403"
+      }
+   ]
+  }"
+ 
+ 
+  2) 등록 - (담당자 추가)
+
+  [POST]
+  ex) ~/log
+
+  "{
+    "data": [
+      {
+        "업무지시담당자": "(Already)OOO팀장",
+        "업무수행담당자": "OOO사원",
+        "업무수행상태": "진행",
+        "처리제목": "차세대 개발",
+        "최초등록타임스탬프": "20210401"
+      }
+   ]
+  }"
