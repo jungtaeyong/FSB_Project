@@ -33,7 +33,25 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main";
+	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String writeBoard(Locale locale, Model model) {
+		
+		logger.info("get write!");
+		System.out.println("get write!!");
+	
+		return "tables";
+	}
+	
+	@RequestMapping(value = "/testt", method = RequestMethod.GET)
+	public String writeBoardd(Locale locale, Model model) {
+		
+		logger.info("get write!");
+		System.out.println("get write!!");
+	
+		return "";
 	}
 	
 }
