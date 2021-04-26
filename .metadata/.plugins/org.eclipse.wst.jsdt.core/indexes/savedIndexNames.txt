@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+C:\Users\Àü¸íÈ¯\Desktop\FSB_Project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1384276899.index
+420416010.index
+4072939338.index
+481938644.index
+3504475173.index
+4102353261.index
+2221341243.index

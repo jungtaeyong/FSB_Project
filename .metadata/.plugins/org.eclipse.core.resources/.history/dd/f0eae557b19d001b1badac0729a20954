@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "BZWR_DSTC": "1",
+      "JOB_CD": "",
+      "SQNO": "1",
+      "BZWR_STS": "01",
+      "BZWR_REG_DT": "2021-04-10",
+      "BZWR_CMPL_DT": "",
+      "BZWR_INDC_CHGR": "221001",
+      "BZWR_INDC_CHGR_TXT": "김동률",
+      "BZWR_EXC_CHGR":"221002",
+      "BZWR_EXC_CHGR_TXT":"전명환",
+      "BZWR_TTL":"업무제목랄랄랄",
+      "BZWR_CNTN":"업무내용호롤롤롤"
+    },
+    {
+      "BZWR_DSTC": "1",
+      "JOB_CD": "",
+      "SQNO": "2",
+      "BZWR_STS": "01",
+      "BZWR_REG_DT": "2021-04-10",
+      "BZWR_CMPL_DT": "",
+      "BZWR_INDC_CHGR": "221001",
+      "BZWR_INDC_CHGR_TXT": "김동산",
+      "BZWR_EXC_CHGR":"221002",
+      "BZWR_EXC_CHGR_TXT":"나승훈",
+      "BZWR_TTL":"한국신용정보원",
+      "BZWR_CNTN":"일반신용정보관리규약 실무 해설"
+    },
+    {
+      "BZWR_DSTC": "1",
+      "JOB_CD": "",
+      "SQNO": "3",
+      "BZWR_STS": "02",
+      "BZWR_REG_DT": "2021-04-10",
+      "BZWR_CMPL_DT": "2021-04-20",
+      "BZWR_INDC_CHGR": "221001",
+      "BZWR_INDC_CHGR_TXT": "배문국",
+      "BZWR_EXC_CHGR":"221002",
+      "BZWR_EXC_CHGR_TXT":"엄상식",
+      "BZWR_TTL":"Unit Method 명명규칙",
+      "BZWR_CNTN":"피대문자 어플리케이션코드 세자리 대문자 업무구분코드"
+    }
+ ]
+}
