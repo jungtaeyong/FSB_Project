@@ -7,33 +7,36 @@
 </head>
 
 <body>
-	<input type="text" id="BZWR_DSTC" name="name" />
-	<input type="text" id="JOB_CD" name="name" />
+	<input type="text" id="bzwr_ttl" name="name" />
+	<input type="text" id="bzwr_cntn" name="name" />
+	<input type="text" id="last_chng_usrno" name="name" />
 	<button type="button" id="submit">test button</button>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $('#submit').click(function(){
-	var BZWR_DSTC=$('#BZWR_DSTC').val();
-	var JOB_CD=$('#JOB_CD').val();
-	var testdata={
-		BZWR_DSTC : BZWR_DSTC,
-		JOB_CD : JOB_CD 
+	var bzwr_ttl=$('#bzwr_ttl').val();
+	var bzwr_cntn=$('#bzwr_cntn').val();
+	var last_chng_usrno=$('#last_chng_usrno').val(); 
+	var form={
+		bzwr_dstc : "ABC",
+		bzwr_ttl : bzwr_ttl,
+		bzwr_cntn : bzwr_cntn,
+		last_chng_usrno : last_chng_usrno
 	};
-	console.log(testdata);
+	console.log(form);
 	
 	$.ajax({
 	    type:'POST',
-	    url: '/board/test',
+	    url: '/board/write',
 	    dataType: 'json',
 	    contentType:"application/json",
-	    data: JSON.stringify(testdata),
+	    data: JSON.stringify(form),
 	    
 	    success: function(data){
 	       console.log("success post test");
 	       console.log(data);
-	   
 	    },
 	    error: function(request, status, error){
 			console.log("fail...");

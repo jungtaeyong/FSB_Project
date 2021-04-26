@@ -3,170 +3,172 @@ package jms.board.domain;
 import java.util.Date;
 
 public class JobVO {
-	String BZWR_DSTC;
-	String JOB_CD;
-	String SQNO;
-	String BZWR_STS; 
-	String BZWR_REG_DT; 
-	String BZWR_CMPL_DT; 
-	String BZWR_INDC_CHGR; 
-	String BZWR_EXC_CHGR; 
-	String BZWR_TTL; 
-	String BZWR_CNTN; 
-	String TEMP_ONE; 
-	String TEMP_TWO; 
-	String REMARK; 
-	String CHNG_DT; 
-	String CHNG_TM;
-	String DEL_YN; 
-	Date FRST_REG_TMSP; 
-	String FRST_REG_GUID; 
-	String FRST_REG_USRNO; 
-	Date LAST_CHNG_TMSP; 
-	String LAST_CHNG_GUID; 
-	String LAST_CHNG_USRNO;
-	public String getBZWR_DSTC() {
-		return BZWR_DSTC;
+	String bzwr_dstc;
+	String job_cd;
+	String sqno;
+	String bzwr_sts; 
+	String bzwr_reg_dt; 
+	String bzwr_cmpl_dt; 
+	String bzwr_indc_chgr; 
+	String bzwr_exc_chgr; 
+	String bzwr_ttl; 
+	String bzwr_cntn; 
+	String temp_one; 
+	String temp_two; 
+	String remark; 
+	String chng_dt; 
+	String chng_tm;
+	String del_yn; 
+	Date frst_reg_tmsp; 
+	String frst_reg_guid; 
+	String frst_reg_usrno; 
+	Date last_chng_tmsp; 
+	String last_chng_guid; 
+	String last_chng_usrno;
+	public String getBzwr_dstc() {
+		return bzwr_dstc;
 	}
-	public void setBZWR_DSTC(String bZWR_DSTC) {
-		BZWR_DSTC = bZWR_DSTC;
+	public void setBzwr_dstc(String bzwr_dstc) {
+		this.bzwr_dstc = bzwr_dstc;
 	}
-	public String getJOB_CD() {
-		return JOB_CD;
+	public String getJob_cd() {
+		return job_cd;
 	}
-	public void setJOB_CD(String jOB_CD) {
-		JOB_CD = jOB_CD;
+	public void setJob_cd(String job_cd) {
+		this.job_cd = job_cd;
 	}
-	public String getSQNO() {
-		return SQNO;
+	public String getSqno() {
+		return sqno;
 	}
-	public void setSQNO(String sQNO) {
-		SQNO = sQNO;
+	public void setSqno(String sqno) {
+		this.sqno = sqno;
 	}
-	public String getBZWR_STS() {
-		return BZWR_STS;
+	public String getBzwr_sts() {
+		return bzwr_sts;
 	}
-	public void setBZWR_STS(String bZWR_STS) {
-		BZWR_STS = bZWR_STS;
+	public void setBzwr_sts(String bzwr_sts) {
+		this.bzwr_sts = bzwr_sts;
 	}
-	public String getBZWR_REG_DT() {
-		return BZWR_REG_DT;
+	public String getBzwr_reg_dt() {
+		return bzwr_reg_dt;
 	}
-	public void setBZWR_REG_DT(String bZWR_REG_DT) {
-		BZWR_REG_DT = bZWR_REG_DT;
+	public void setBzwr_reg_dt(String bzwr_reg_dt) {
+		this.bzwr_reg_dt = bzwr_reg_dt;
 	}
-	public String getBZWR_CMPL_DT() {
-		return BZWR_CMPL_DT;
+	public String getBzwr_cmpl_dt() {
+		return bzwr_cmpl_dt;
 	}
-	public void setBZWR_CMPL_DT(String bZWR_CMPL_DT) {
-		BZWR_CMPL_DT = bZWR_CMPL_DT;
+	public void setBzwr_cmpl_dt(String bzwr_cmpl_dt) {
+		this.bzwr_cmpl_dt = bzwr_cmpl_dt;
 	}
-	public String getBZWR_INDC_CHGR() {
-		return BZWR_INDC_CHGR;
+	public String getBzwr_indc_chgr() {
+		return bzwr_indc_chgr;
 	}
-	public void setBZWR_INDC_CHGR(String bZWR_INDC_CHGR) {
-		BZWR_INDC_CHGR = bZWR_INDC_CHGR;
+	public void setBzwr_indc_chgr(String bzwr_indc_chgr) {
+		this.bzwr_indc_chgr = bzwr_indc_chgr;
 	}
-	public String getBZWR_EXC_CHGR() {
-		return BZWR_EXC_CHGR;
+	public String getBzwr_exc_chgr() {
+		return bzwr_exc_chgr;
 	}
-	public void setBZWR_EXC_CHGR(String bZWR_EXC_CHGR) {
-		BZWR_EXC_CHGR = bZWR_EXC_CHGR;
+	public void setBzwr_exc_chgr(String bzwr_exc_chgr) {
+		this.bzwr_exc_chgr = bzwr_exc_chgr;
 	}
-	public String getBZWR_TTL() {
-		return BZWR_TTL;
+	public String getBzwr_ttl() {
+		return bzwr_ttl;
 	}
-	public void setBZWR_TTL(String bZWR_TTL) {
-		BZWR_TTL = bZWR_TTL;
+	public void setBzwr_ttl(String bzwr_ttl) {
+		this.bzwr_ttl = bzwr_ttl;
 	}
-	public String getBZWR_CNTN() {
-		return BZWR_CNTN;
+	public String getBzwr_cntn() {
+		return bzwr_cntn;
 	}
-	public void setBZWR_CNTN(String bZWR_CNTN) {
-		BZWR_CNTN = bZWR_CNTN;
+	public void setBzwr_cntn(String bzwr_cntn) {
+		this.bzwr_cntn = bzwr_cntn;
 	}
-	public String getTEMP_ONE() {
-		return TEMP_ONE;
+	public String getTemp_one() {
+		return temp_one;
 	}
-	public void setTEMP_ONE(String tEMP_ONE) {
-		TEMP_ONE = tEMP_ONE;
+	public void setTemp_one(String temp_one) {
+		this.temp_one = temp_one;
 	}
-	public String getTEMP_TWO() {
-		return TEMP_TWO;
+	public String getTemp_two() {
+		return temp_two;
 	}
-	public void setTEMP_TWO(String tEMP_TWO) {
-		TEMP_TWO = tEMP_TWO;
+	public void setTemp_two(String temp_two) {
+		this.temp_two = temp_two;
 	}
-	public String getREMARK() {
-		return REMARK;
+	public String getRemark() {
+		return remark;
 	}
-	public void setREMARK(String rEMARK) {
-		REMARK = rEMARK;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-	public String getCHNG_DT() {
-		return CHNG_DT;
+	public String getChng_dt() {
+		return chng_dt;
 	}
-	public void setCHNG_DT(String cHNG_DT) {
-		CHNG_DT = cHNG_DT;
+	public void setChng_dt(String chng_dt) {
+		this.chng_dt = chng_dt;
 	}
-	public String getCHNG_TM() {
-		return CHNG_TM;
+	public String getChng_tm() {
+		return chng_tm;
 	}
-	public void setCHNG_TM(String cHNG_TM) {
-		CHNG_TM = cHNG_TM;
+	public void setChng_tm(String chng_tm) {
+		this.chng_tm = chng_tm;
 	}
-	public String getDEL_YN() {
-		return DEL_YN;
+	public String getDel_yn() {
+		return del_yn;
 	}
-	public void setDEL_YN(String dEL_YN) {
-		DEL_YN = dEL_YN;
+	public void setDel_yn(String del_yn) {
+		this.del_yn = del_yn;
 	}
-	public Date getFRST_REG_TMSP() {
-		return FRST_REG_TMSP;
+	public Date getFrst_reg_tmsp() {
+		return frst_reg_tmsp;
 	}
-	public void setFRST_REG_TMSP(Date fRST_REG_TMSP) {
-		FRST_REG_TMSP = fRST_REG_TMSP;
+	public void setFrst_reg_tmsp(Date frst_reg_tmsp) {
+		this.frst_reg_tmsp = frst_reg_tmsp;
 	}
-	public String getFRST_REG_GUID() {
-		return FRST_REG_GUID;
+	public String getFrst_reg_guid() {
+		return frst_reg_guid;
 	}
-	public void setFRST_REG_GUID(String fRST_REG_GUID) {
-		FRST_REG_GUID = fRST_REG_GUID;
+	public void setFrst_reg_guid(String frst_reg_guid) {
+		this.frst_reg_guid = frst_reg_guid;
 	}
-	public String getFRST_REG_USRNO() {
-		return FRST_REG_USRNO;
+	public String getFrst_reg_usrno() {
+		return frst_reg_usrno;
 	}
-	public void setFRST_REG_USRNO(String fRST_REG_USRNO) {
-		FRST_REG_USRNO = fRST_REG_USRNO;
+	public void setFrst_reg_usrno(String frst_reg_usrno) {
+		this.frst_reg_usrno = frst_reg_usrno;
 	}
-	public Date getLAST_CHNG_TMSP() {
-		return LAST_CHNG_TMSP;
+	public Date getLast_chng_tmsp() {
+		return last_chng_tmsp;
 	}
-	public void setLAST_CHNG_TMSP(Date lAST_CHNG_TMSP) {
-		LAST_CHNG_TMSP = lAST_CHNG_TMSP;
+	public void setLast_chng_tmsp(Date last_chng_tmsp) {
+		this.last_chng_tmsp = last_chng_tmsp;
 	}
-	public String getLAST_CHNG_GUID() {
-		return LAST_CHNG_GUID;
+	public String getLast_chng_guid() {
+		return last_chng_guid;
 	}
-	public void setLAST_CHNG_GUID(String lAST_CHNG_GUID) {
-		LAST_CHNG_GUID = lAST_CHNG_GUID;
+	public void setLast_chng_guid(String last_chng_guid) {
+		this.last_chng_guid = last_chng_guid;
 	}
-	public String getLAST_CHNG_USRNO() {
-		return LAST_CHNG_USRNO;
+	public String getLast_chng_usrno() {
+		return last_chng_usrno;
 	}
-	public void setLAST_CHNG_USRNO(String lAST_CHNG_USRNO) {
-		LAST_CHNG_USRNO = lAST_CHNG_USRNO;
+	public void setLast_chng_usrno(String last_chng_usrno) {
+		this.last_chng_usrno = last_chng_usrno;
 	}
+	
 	@Override
 	public String toString() {
-		return "JobVO [BZWR_DSTC=" + BZWR_DSTC + ", JOB_CD=" + JOB_CD + ", SQNO=" + SQNO + ", BZWR_STS=" + BZWR_STS
-				+ ", BZWR_REG_DT=" + BZWR_REG_DT + ", BZWR_CMPL_DT=" + BZWR_CMPL_DT + ", BZWR_INDC_CHGR="
-				+ BZWR_INDC_CHGR + ", BZWR_EXC_CHGR=" + BZWR_EXC_CHGR + ", BZWR_TTL=" + BZWR_TTL + ", BZWR_CNTN="
-				+ BZWR_CNTN + ", TEMP_ONE=" + TEMP_ONE + ", TEMP_TWO=" + TEMP_TWO + ", REMARK=" + REMARK + ", CHNG_DT="
-				+ CHNG_DT + ", CHNG_TM=" + CHNG_TM + ", DEL_YN=" + DEL_YN + ", FRST_REG_TMSP=" + FRST_REG_TMSP
-				+ ", FRST_REG_GUID=" + FRST_REG_GUID + ", FRST_REG_USRNO=" + FRST_REG_USRNO + ", LAST_CHNG_TMSP="
-				+ LAST_CHNG_TMSP + ", LAST_CHNG_GUID=" + LAST_CHNG_GUID + ", LAST_CHNG_USRNO=" + LAST_CHNG_USRNO + "]";
+		return "JobVO [bzwr_dstc=" + bzwr_dstc + ", job_cd=" + job_cd + ", sqno=" + sqno + ", bzwr_sts=" + bzwr_sts
+				+ ", bzwr_reg_dt=" + bzwr_reg_dt + ", bzwr_cmpl_dt=" + bzwr_cmpl_dt + ", bzwr_indc_chgr="
+				+ bzwr_indc_chgr + ", bzwr_exc_chgr=" + bzwr_exc_chgr + ", bzwr_ttl=" + bzwr_ttl + ", bzwr_cntn="
+				+ bzwr_cntn + ", temp_one=" + temp_one + ", temp_two=" + temp_two + ", remark=" + remark + ", chng_dt="
+				+ chng_dt + ", chng_tm=" + chng_tm + ", del_yn=" + del_yn + ", frst_reg_tmsp=" + frst_reg_tmsp
+				+ ", frst_reg_guid=" + frst_reg_guid + ", frst_reg_usrno=" + frst_reg_usrno + ", last_chng_tmsp="
+				+ last_chng_tmsp + ", last_chng_guid=" + last_chng_guid + ", last_chng_usrno=" + last_chng_usrno + "]";
 	}
+
 	
 	
 }

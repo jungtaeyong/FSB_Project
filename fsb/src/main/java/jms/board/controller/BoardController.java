@@ -1,10 +1,12 @@
 package jms.board.controller;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jms.web.HomeController;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import jms.board.domain.JobVO;
+import jms.board.service.JobService;
 
 
 @Controller
@@ -27,6 +30,7 @@ public class BoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
+	@Inject JobService service;
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String abc(Locale locale, Model model) {
@@ -55,5 +59,24 @@ public class BoardController {
 //		logger.info("Welcome home! The client locale is {}.", locale);
 		return res;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public int write(@RequestBody JobVO jvo,HttpServletResponse response, Model model)throws Exception {
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyyddMMHHmmss");
+		Date date = new Date();
+		String dateToStr = dateFormat.format(date);
+		jvo.setBzwr_dstc(dateToStr);
+		jvo.setJob_cd(dateToStr);
+		jvo.setSqno(dateToStr);
+		System.out.println(jvo);
+		
+		int ret = service.writeJob(jvo);
+		
+		
+		return ret;
+	}
+	
 	
 }
