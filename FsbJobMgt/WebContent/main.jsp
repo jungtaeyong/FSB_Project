@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ include file="/modal1_Adding.jsp" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/WEB-INF/views/modal1_Adding.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¾÷¹« °ü¸®</title>
+<title>ì—…ë¬´ ê´€ë¦¬</title>
 </head>
 <body>
 <!-- jquery  -->
@@ -21,37 +22,37 @@
 <script type="text/javascript" src="resources/lib/DataTables-1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
 $(document).ready(function() {
-	/* ÃÊ±â Á¶È¸ Á¶°Ç ¼¼ÆÃ */
-	$('#REQUEST_TYPE').val('1'); //±¸ºĞ
-	$('#BZWR_STS').val('01'); //Ã³¸®»óÅÂ
-	$('#BZWR_DSTC').val('2'); //¾÷¹«±¸ºĞ
+	/* ì´ˆê¸° ì¡°íšŒ ì¡°ê±´ ì„¸íŒ… */
+	$('#REQUEST_TYPE').val('1'); //êµ¬ë¶„
+	$('#BZWR_STS').val('01'); //ì²˜ë¦¬ìƒíƒœ
+	$('#BZWR_DSTC').val('2'); //ì—…ë¬´êµ¬ë¶„
 	
 	let befor7days= new Date();
 	befor7days.setDate(befor7days.getDate()-5);
 	document.getElementById('FROM_DATE').valueAsDate = befor7days; //FROM_DATE
 	document.getElementById('TO_DATE').valueAsDate = new Date(); //TO_DATE
 	
-	/* Å×ÀÌºí ÃÊ±â ·Îµù */
+	/* í…Œì´ë¸” ì´ˆê¸° ë¡œë”© */
 	let jobList = loadTableData();
 	
-	/* Å×ÀÌºí Index »ı¼ºÀ» À§ÇÑ ÇÔ¼ö */
+	/* í…Œì´ë¸” Index ìƒì„±ì„ ìœ„í•œ í•¨ìˆ˜ */
 	jobList.on( 'order.dt search.dt', function () {
 		jobList.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
 	        cell.innerHTML = i+1;
 	    } );
 	} ).draw();
 
-	/* Å×ÀÌºí Å¬¸¯ ÀÌº¥Æ®  -> Å¬¸¯ÇÑ row¿¡ ÇØ´çÇÏ´Â µ¥ÀÌÅÍ¸¦ »ó¼¼ Á¤º¸¿¡ º¸¿©ÁÜ*/
+	/* í…Œì´ë¸” í´ë¦­ ì´ë²¤íŠ¸  -> í´ë¦­í•œ rowì— í•´ë‹¹í•˜ëŠ” ë°ì´í„°ë¥¼ ìƒì„¸ ì •ë³´ì— ë³´ì—¬ì¤Œ*/
 	$('#job_list tbody').on('click', 'td:nth-child(-n+7)', function () {
 		let data = jobList.row( this ).data();
 	    console.log('Table Click Event',data);
 	   	
-		if($('#REQUEST_TYPE').val()!='2'){ //"±¸ºĞ-µî·Ï" »óÅÂ¸é ¹İÀÀ ¾øÀ½.
-	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //Áö½ÃÀÚ
-	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //´ã´çÀÚ
-	        $('#BZWR_STS_2').val(data.BZWR_STS); //Ã³¸®»óÅÂ(¾÷¹«»óÅÂ)
-	        $('#BZWR_TTL').val(data.BZWR_TTL); //Á¦¸ñ
-	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //³»¿ë 
+		if($('#REQUEST_TYPE').val()!='2'){ //"êµ¬ë¶„-ë“±ë¡" ìƒíƒœë©´ ë°˜ì‘ ì—†ìŒ.
+	        $('#BZWR_INDC_CHGR').text(data.BZWR_INDC_CHGR_TXT); //ì§€ì‹œì
+	        $('#BZWR_EXC_CHGR').text(data.BZWR_EXC_CHGR_TXT); //ë‹´ë‹¹ì
+	        $('#BZWR_STS_2').val(data.BZWR_STS); //ì²˜ë¦¬ìƒíƒœ(ì—…ë¬´ìƒíƒœ)
+	        $('#BZWR_TTL').val(data.BZWR_TTL); //ì œëª©
+	        $('#BZWR_CNTN').val(data.BZWR_CNTN); //ë‚´ìš© 
 	        if($('#REQUEST_TYPE').val()=='1' || data.BZWR_STS=='02'){
 	        	$('#BZWR_EXC_CHGR_BTN').hide();
 				$('#BZWR_STS_2').attr("disabled",true);
@@ -66,45 +67,45 @@ $(document).ready(function() {
 		}
 	} );
 
-	/* ¼±ÅÃµÈ  row ÇÏÀÌ¶óÀÌÆ® */
+	/* ì„ íƒëœ  row í•˜ì´ë¼ì´íŠ¸ */
 	$('#job_list tbody').on('click', 'tr', function() {
 		$('#job_list tbody > tr').css('background-color','#ffffff');
 		$(this).css('background-color','#f0f5f5');
 	});
 
-	/* Å×ÀÌºí ¹öÆ° ÀÌº¥Æ®(´ã´çÀÚÀÔ·Â) */
+	/* í…Œì´ë¸” ë²„íŠ¼ ì´ë²¤íŠ¸(ë‹´ë‹¹ìì…ë ¥) */
 	$('#job_list tbody').on( 'click', 'button[name="first_btn"]', function () {
 	    let data = jobList.row( $(this).parents('tr') ).data();
 		//console.log("First Button",data);
-		setData(data); //¸ğ´Ş ÆäÀÌÁö·Î µ¥ÀÌÅÍ¸¦ Àü´ŞÇÏ±â À§ÇÑ ÇÔ¼ö
+		setData(data); //ëª¨ë‹¬ í˜ì´ì§€ë¡œ ë°ì´í„°ë¥¼ ì „ë‹¬í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
 		$('#exampleModal').modal();
 	} );
 
-	/* Å×ÀÌºí ¹öÆ° ÀÌº¥Æ®(ÀüÃ¼ÁøÇà»óÈ²) */
+	/* í…Œì´ë¸” ë²„íŠ¼ ì´ë²¤íŠ¸(ì „ì²´ì§„í–‰ìƒí™©) */
 	$('#job_list tbody').on( 'click', 'button[name="second_btn"]', function () {
 	    let data = jobList.row( $(this).parents('tr') ).data();
 		//console.log("Second Button",data);
-	    setData(data); //¸ğ´Ş ÆäÀÌÁö·Î µ¥ÀÌÅÍ¸¦ Àü´ŞÇÏ±â À§ÇÑ ÇÔ¼ö
+	    setData(data); //ëª¨ë‹¬ í˜ì´ì§€ë¡œ ë°ì´í„°ë¥¼ ì „ë‹¬í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
 		$('#exampleModalCenter').modal();
 	} );
 	
 	
-	/* ¼Û½Å¹öÆ° */
+	/* ì†¡ì‹ ë²„íŠ¼ */
 	$('#action_submit').click(function(){
 		let dvcd = $('#REQUEST_TYPE').val();
 		if(dvcd=='1'){
-			console.log('Á¶È¸');
+			console.log('ì¡°íšŒ');
 			loadTableData();
 		}else if(dvcd=='2'){
-			console.log('µî·Ï');
+			console.log('ë“±ë¡');
 			createNewJob();
 		}else if(dvcd=='3'){
-			console.log('º¯°æ');
+			console.log('ë³€ê²½');
 			updateJob();
 		}
 	});
 
-	/* ±¸ºĞ º¯°æ ÀÌº¥Æ® Ã³¸® */
+	/* êµ¬ë¶„ ë³€ê²½ ì´ë²¤íŠ¸ ì²˜ë¦¬ */
 	$('#REQUEST_TYPE').change(function() {
 		let dvcd = $('#REQUEST_TYPE').val();
 		if(dvcd=='1'){
@@ -113,7 +114,7 @@ $(document).ready(function() {
 			$('#BZWR_TTL').attr("disabled",true);
 			$('#BZWR_CNTN').attr("disabled",true);
 		}else if(dvcd=='2'){
-			$('#BZWR_INDC_CHGR').text('·Î±×ÀÎ À¯Àú');
+			$('#BZWR_INDC_CHGR').text('ë¡œê·¸ì¸ ìœ ì €');
 			$('#BZWR_EXC_CHGR').text('');
 			$('#BZWR_EXC_CHGR_BTN').show();
 			$('#BZWR_STS_2').attr("disabled",true);
@@ -126,7 +127,7 @@ $(document).ready(function() {
 			$('#BZWR_STS_2').removeAttr("disabled");
 			$('#BZWR_TTL').removeAttr("disabled");
 			$('#BZWR_CNTN').removeAttr("disabled");
-			alert('º¯°æÇÒ µ¥ÀÌÅÍ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.');
+			alert('ë³€ê²½í•  ë°ì´í„°ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.');
 		}
 	});
 
@@ -134,7 +135,7 @@ $(document).ready(function() {
 
 
 function loadTableData(){
-	/* Å×ÀÌºí µ¥ÀÌÅÍ ·Îµù ¹× ¼¼ÆÃ */
+	/* í…Œì´ë¸” ë°ì´í„° ë¡œë”© ë° ì„¸íŒ… */
 	let sendData = {
     		REQUEST_TYPE:$('#REQUEST_TYPE').val(),
     		FROM_DATE:$('#FROM_DATE').val(), 
@@ -155,9 +156,9 @@ function loadTableData(){
 			{data: "BZWR_TTL" },
             {data: "BZWR_STS", render : function ( data, type, row, meta ) {
             	if(data=="01"){
-            		return 'ÁøÇàÁß';
+            		return 'ì§„í–‰ì¤‘';
             	}else if(data=="02"){
-            		return '¿Ï·á';
+            		return 'ì™„ë£Œ';
             	}
             }},
             {data: "BZWR_INDC_CHGR_TXT" },
@@ -165,10 +166,10 @@ function loadTableData(){
             {data: "BZWR_REG_DT" },
             {data: "BZWR_CMPL_DT" },
             {data: null , render : function ( data, type, row, meta ) {
-                return '<button name="first_btn" class="btn btn-sm btn-default">ÀÔ·Â</button>'
+                return '<button name="first_btn" class="btn btn-sm btn-default">ì…ë ¥</button>'
             }},
             {data: null , render : function ( data, type, row, meta ) {
-                return '<button name="second_btn" class="btn btn-sm btn-default">È®ÀÎ</button>'
+                return '<button name="second_btn" class="btn btn-sm btn-default">í™•ì¸</button>'
             }}
         ],
         columnDefs: [{ className: 'text-center', targets: [0,2,3,4,5,6,7,8] }],
@@ -177,127 +178,133 @@ function loadTableData(){
 }
 
 	
-/* µî·Ï */
+/* ë“±ë¡ */
 function createNewJob(){
 	let sendData = { 
-			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //±¸ºĞ(Á¶È¸,µî·Ï,º¯°æ)
-			BZWR_DSTC:$('#BZWR_DSTC').val(), //¾÷¹«±¸ºĞ
-			BZWR_INDC_CHGR:'·Î±×ÀÎ À¯Àú', //¾÷¹«Áö½Ã´ã´çÀÚ
-			BZWR_EXC_CHGR:'´ã´çÀÚ', //¾÷¹«¼öÇà´ã´çÀÚ
-			BZWR_STS:'1', //¾÷¹«»óÅÂ (µî·Ï ½Ã ÁøÇàÀ¸·Î ¼¼ÆÃ)
-			BZWR_TTL:$('#BZWR_TTL').val(), //¾÷¹«Á¦¸ñ
-			BZWR_CNTN:$('#BZWR_CNTN').val() //¾÷¹«³»¿ë
+			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //êµ¬ë¶„(ì¡°íšŒ,ë“±ë¡,ë³€ê²½)
+			BZWR_DSTC:$('#BZWR_DSTC').val(), //ì—…ë¬´êµ¬ë¶„
+			BZWR_INDC_CHGR:'ë¡œê·¸ì¸ ìœ ì €', //ì—…ë¬´ì§€ì‹œë‹´ë‹¹ì
+			BZWR_EXC_CHGR:'ë‹´ë‹¹ì', //ì—…ë¬´ìˆ˜í–‰ë‹´ë‹¹ì
+			BZWR_STS:'1', //ì—…ë¬´ìƒíƒœ (ë“±ë¡ ì‹œ ì§„í–‰ìœ¼ë¡œ ì„¸íŒ…)
+			BZWR_TTL:$('#BZWR_TTL').val(), //ì—…ë¬´ì œëª©
+			BZWR_CNTN:$('#BZWR_CNTN').val() //ì—…ë¬´ë‚´ìš©
 		};
-	console.log('sendData',sendData);
+	console.log('í”„ë¡ íŠ¸ê°€ ì˜ëŠ” ë°ì´í„°',sendData);
 	$.ajax({
-		url:'',
-		dataType:'application/json',
-		data : sendData,
+		url:'http://52.79.71.167:8080/board/test',
+		type:'POST',
+		contentType : 'application/json',
+		data:JSON.stringify(sendData),
 		success:function(data){
-			alert('µî·Ï µÇ¾ú½À´Ï´Ù.');
-	   }
+			console.log("ë°±ì—”ë“œ ì‘ë‹µ ë°ì´í„°",data);
+			alert('ë“±ë¡ ë˜ì—ˆìŠµë‹ˆë‹¤.');
+	   },
+		complete: function(xhr, textStatus) {
+        console.log(xhr.status);
+        console.log(xhr);
+    	} 
 	})
 }
 
 
-/* º¯°æ */
+/* ë³€ê²½ */
 function updateJob(){
 	let sendData = { 
-			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //±¸ºĞ(Á¶È¸,µî·Ï,º¯°æ)
-			BZWR_DSTC:$('#BZWR_DSTC').val(), //¾÷¹«±¸ºĞ
-			BZWR_EXC_CHGR:'´ã´çÀÚ', //¾÷¹«¼öÇà´ã´çÀÚ
-			BZWR_STS:$('#BZWR_STS_2').val(), //¾÷¹«»óÅÂ
-			BZWR_TTL:$('#BZWR_TTL').val(), //¾÷¹«Á¦¸ñ
-			BZWR_CNTN:$('#BZWR_CNTN').val() //¾÷¹«³»¿ë
+			REQUEST_TYPE:$('#REQUEST_TYPE').val(), //êµ¬ë¶„(ì¡°íšŒ,ë“±ë¡,ë³€ê²½)
+			BZWR_DSTC:$('#BZWR_DSTC').val(), //ì—…ë¬´êµ¬ë¶„
+			BZWR_EXC_CHGR:'ë‹´ë‹¹ì', //ì—…ë¬´ìˆ˜í–‰ë‹´ë‹¹ì
+			BZWR_STS:$('#BZWR_STS_2').val(), //ì—…ë¬´ìƒíƒœ
+			BZWR_TTL:$('#BZWR_TTL').val(), //ì—…ë¬´ì œëª©
+			BZWR_CNTN:$('#BZWR_CNTN').val() //ì—…ë¬´ë‚´ìš©
 		};
 	console.log('sendData',sendData);
-	if(sendData.BZWR_STS=='02'){ //¿Ï·áµÈ ¾÷¹«ÀÎ °æ¿ì º¯°æ ºÒ°¡
-		alert('ÀÌ¹Ì ¿Ï·áµÈ ¾÷¹«ÀÔ´Ï´Ù.');
+	if(sendData.BZWR_STS=='02'){ //ì™„ë£Œëœ ì—…ë¬´ì¸ ê²½ìš° ë³€ê²½ ë¶ˆê°€
+		alert('ì´ë¯¸ ì™„ë£Œëœ ì—…ë¬´ì…ë‹ˆë‹¤.');
 	}else{
 		$.ajax({
 			url:'',
 			dataType:'application/json',
 			data : sendData,
 			success:function(data){
-				alert('º¯°æ µÇ¾ú½À´Ï´Ù.');
+				alert('ë³€ê²½ ë˜ì—ˆìŠµë‹ˆë‹¤.');
 		   }
 		})
 	}
 }
 </script>
 <div class="container" style="margin-top:30px">
-	<!-- Á¶È¸ Á¶°Ç -->
+	<!-- ì¡°íšŒ ì¡°ê±´ -->
 	<div>
 		<div>
-			<label style="font-weight:bold;">±¸ºĞ&nbsp;</label>
+			<label style="font-weight:bold;">êµ¬ë¶„&nbsp;</label>
 			<select id="REQUEST_TYPE" style="margin-right:25px">
-			    <option value="1">Á¶È¸</option>
-			    <option value="2">µî·Ï</option>
-			    <option value="3">º¯°æ</option>
+			    <option value="1">ì¡°íšŒ</option>
+			    <option value="2">ë“±ë¡</option>
+			    <option value="3">ë³€ê²½</option>
 			</select>
-			<label style="font-weight:bold">Á¶È¸±â°£&nbsp;</label>
+			<label style="font-weight:bold">ì¡°íšŒê¸°ê°„&nbsp;</label>
 			<input type="date" id="FROM_DATE" style="width:145px" value=""/>
 			<label style="font-weight:bold">~&nbsp;</label>
 			<input type="date" id="TO_DATE" value=""  style="margin-right:25px;width:145px"/>
-			<label style="font-weight:bold;">Ã³¸®»óÅÂ&nbsp;</label>
+			<label style="font-weight:bold;">ì²˜ë¦¬ìƒíƒœ&nbsp;</label>
 			<select id="BZWR_STS" style="margin-right:25px">
-			    <option value="01">ÁøÇà</option>
-			    <option value="02">¿Ï·á</option>
-			    <option value="03">ÀüÃ¼</option>
+			    <option value="01">ì§„í–‰</option>
+			    <option value="02">ì™„ë£Œ</option>
+			    <option value="03">ì „ì²´</option>
 			</select>
-			<label style="font-weight:bold;">¾÷¹«±¸ºĞ&nbsp;</label>
+			<label style="font-weight:bold;">ì—…ë¬´êµ¬ë¶„&nbsp;</label>
 			<select id="BZWR_DSTC">
-			    <option value="1">Áö½Ã¾÷¹«</option>
-			    <option value="2">´ã´ç¾÷¹«</option>
+			    <option value="1">ì§€ì‹œì—…ë¬´</option>
+			    <option value="2">ë‹´ë‹¹ì—…ë¬´</option>
 			</select>
-			<input type='button' id="action_submit" class="btn btn-sm btn-primary" style="float:right" value='¼Û½Å'/>
+			<input type='button' id="action_submit" class="btn btn-sm btn-primary" style="float:right" value='ì†¡ì‹ '/>
 		</div>
 	</div>
 	<hr/>
-	<!-- ¸ñ·Ï -->	
+	<!-- ëª©ë¡ -->	
 	<div>
 		<table id="job_list" class="table table-sm responsive table-bordered" width="100%">
 	        <thead>
 	            <tr>
 	            	<th>No</th>
-	                <th>Á¦¸ñ</th>
-	                <th>Ã³¸®»óÅÂ</th>
-	                <th>Áö½ÃÀÚ</th>
-	                <th>´ã´çÀÚ</th>
-	                <th>µî·ÏÀÏÀÚ</th>
-	                <th>¿Ï·áÀÏÀÚ</th>
-	                <th>´ã´çÀÚÀÔ·Â</th>
-	                <th>ÀüÃ¼ÁøÇà»óÈ²</th>
+	                <th>ì œëª©</th>
+	                <th>ì²˜ë¦¬ìƒíƒœ</th>
+	                <th>ì§€ì‹œì</th>
+	                <th>ë‹´ë‹¹ì</th>
+	                <th>ë“±ë¡ì¼ì</th>
+	                <th>ì™„ë£Œì¼ì</th>
+	                <th>ë‹´ë‹¹ìì…ë ¥</th>
+	                <th>ì „ì²´ì§„í–‰ìƒí™©</th>
 	            </tr>
 	        </thead>
 	    </table>
 	</div>
 	<hr/>
-	<!-- »ó¼¼ -->
+	<!-- ìƒì„¸ -->
 	<div>
 		<table class="table table-bordered table-sm display nowrap" style="text-align:center;">
 			<tr>
-				<th scope="col" width="10%">Áö½ÃÀÚ</th>
+				<th scope="col" width="10%">ì§€ì‹œì</th>
 				<td scope="col" id="BZWR_INDC_CHGR" width="10%"></td>
-				<th scope="col" width="10%">´ã´çÀÚ</th>
+				<th scope="col" width="10%">ë‹´ë‹¹ì</th>
 				<td scope="col" width="10%">
 					<span id="BZWR_EXC_CHGR"></span>
-					<button id="BZWR_EXC_CHGR_BTN" class="btn btn-sm btn-info" style="display:none">¼±ÅÃ</button>
+					<button id="BZWR_EXC_CHGR_BTN" class="btn btn-sm btn-info" style="display:none">ì„ íƒ</button>
 				</td>
-				<th scope="col" width="10%">Ã³¸®»óÅÂ</th>
+				<th scope="col" width="10%">ì²˜ë¦¬ìƒíƒœ</th>
 				<td scope="col" width="10%">
 					<select id="BZWR_STS_2" class="form-control" disabled>
-					    <option value="01">ÁøÇàÁß</option>
-					    <option value="02">¿Ï·á</option>
+					    <option value="01">ì§„í–‰ì¤‘</option>
+					    <option value="02">ì™„ë£Œ</option>
 					</select>
 				</td>
 				<td scope="col"></td>
 			</tr>
 			<tr>
-				<th scope="row">Á¦¸ñ</th><td colspan="6"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
+				<th scope="row">ì œëª©</th><td colspan="6"><input type="text" id="BZWR_TTL" class="form-control input-sm" disabled/></td>
 			</tr>
 			<tr>
-				<th scope="row">³»¿ë</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
+				<th scope="row">ë‚´ìš©</th><td colspan="6"><textarea ID="BZWR_CNTN" class="form-control input-sm" rows="5" disabled></textarea></td>
 			</tr>
 		</table>
 	</div>
