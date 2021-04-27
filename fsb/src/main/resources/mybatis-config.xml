@@ -8,5 +8,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="jms.board.domain.JobVO" alias="JobVO"/>
+		<typeAlias type="jms.board.domain.JobHisVO" alias="JobHisVO"/>
 	</typeAliases>
 </configuration>

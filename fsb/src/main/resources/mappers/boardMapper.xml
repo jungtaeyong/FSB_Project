@@ -7,7 +7,23 @@
 	
 	<insert id="writeJob">
 		INSERT INTO CUSM_JOB(BZWR_DSTC , JOB_CD , SQNO , BZWR_STS , BZWR_REG_DT , BZWR_CMPL_DT, BZWR_INDC_CHGR ,BZWR_EXC_CHGR, BZWR_TTL, BZWR_CNTN, TEMP_ONE, TEMP_TWO, REMARK, CHNG_DT, CHNG_TM, DEL_YN, FRST_REG_GUID, FRST_REG_USRNO, LAST_CHNG_GUID, LAST_CHNG_USRNO)
-			VALUES(#{bzwr_dstc}, #{job_cd}, #{sqno}, #{bzwr_sts, jdbcType=VARCHAR} , #{bzwr_reg_dt, jdbcType=VARCHAR}, #{bzwr_cmpl_dt, jdbcType=VARCHAR}, #{bzwr_indc_chgr, jdbcType=VARCHAR} ,#{bzwr_exc_chgr, jdbcType=VARCHAR}, #{bzwr_ttl, jdbcType=VARCHAR}, #{bzwr_cntn, jdbcType=VARCHAR}, #{temp_one, jdbcType=VARCHAR}, #{temp_two, jdbcType=VARCHAR}, #{remark, jdbcType=VARCHAR}, #{chng_dt, jdbcType=VARCHAR}, #{chng_tm, jdbcType=VARCHAR}, #{del_yn, jdbcType=VARCHAR}, #{frst_reg_guid, jdbcType=VARCHAR}, #{frst_reg_usrno, jdbcType=VARCHAR}, #{last_chng_guid, jdbcType=VARCHAR}, #{last_chng_usrno, jdbcType=VARCHAR})
+			VALUES(#{bzwrDstc}, #{jobCd}, #{sqno}, #{bzwrSts, jdbcType=VARCHAR} , #{bzwrRegDt, jdbcType=VARCHAR}, #{bzwrCmplDt, jdbcType=VARCHAR}, #{bzwrIndcChgr, jdbcType=VARCHAR} ,#{bzwrExcChgr, jdbcType=VARCHAR}, #{bzwrTtl, jdbcType=VARCHAR}, #{bzwrCntn, jdbcType=VARCHAR}, #{tempOne, jdbcType=VARCHAR}, #{tempTwo, jdbcType=VARCHAR}, #{remark, jdbcType=VARCHAR}, #{chngDt, jdbcType=VARCHAR}, #{chngTm, jdbcType=VARCHAR}, #{delYn, jdbcType=VARCHAR}, #{frstRegGuid, jdbcType=VARCHAR}, #{frstRegUsrno, jdbcType=VARCHAR}, #{lastChngGuid, jdbcType=VARCHAR}, #{lastChngUsrno, jdbcType=VARCHAR})
 	</insert>
+	
+	<insert id="writeJobHis">
+		INSERT INTO CUSH_JOB(FRST_REG_DT , BZWR_DSTC, JOB_CD , SQNO , DTL_SQNO , BZWR_EXC_STS, BZWR_TRTM_INFO ,BZWR_INDC_CHGR  , BZWR_EXC_CHGR , BZWR_TRTM_TTL , BZWR_TRTM_CNTN , TEMP_ONE , TEMP_TWO, REMARK, CHNG_DT, CHNG_TM, DEL_YN, FRST_REG_GUID, FRST_REG_USRNO, LAST_CHNG_GUID, LAST_CHNG_USRNO)
+			VALUES(#{frstRegDt}, #{bzwrDstc}, #{jobCd}, #{sqno, jdbcType=VARCHAR} , #{dtlSqno, jdbcType=VARCHAR}, #{bzwrExcSts, jdbcType=VARCHAR}, #{bzwrTrtmInfo, jdbcType=VARCHAR} ,#{bzwrIndcChgr, jdbcType=VARCHAR}, #{bzwrExcChgr, jdbcType=VARCHAR}, #{bzwrTrtmTtl, jdbcType=VARCHAR}, #{bzwrTrtmCntn, jdbcType=VARCHAR}, #{tempOne, jdbcType=VARCHAR}, #{tempTwo, jdbcType=VARCHAR}, #{remark, jdbcType=VARCHAR}, #{chngDt, jdbcType=VARCHAR}, #{chngTm, jdbcType=VARCHAR}, #{delYn, jdbcType=VARCHAR}, #{frstRegGuid, jdbcType=VARCHAR}, #{frstRegUsrno, jdbcType=VARCHAR}, #{lastChngGuid, jdbcType=VARCHAR}, #{lastChngUsrno, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="listAll" resultType="JobVO">
+		SELECT 
+			* 
+			FROM CUSM_JOB 
+			WHERE 1=1
+			<if test="stdt != null">
+				AND SUBSTR(JOB_CD,1,8) BETWEEN #{stdt} and #{eddt}
+			</if>
+			
+	</select>
 	
 </mapper>

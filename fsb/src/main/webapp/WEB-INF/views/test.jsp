@@ -20,10 +20,10 @@ $('#submit').click(function(){
 	var bzwr_cntn=$('#bzwr_cntn').val();
 	var last_chng_usrno=$('#last_chng_usrno').val(); 
 	var form={
-		bzwr_dstc : "ABC",
-		bzwr_ttl : bzwr_ttl,
-		bzwr_cntn : bzwr_cntn,
-		last_chng_usrno : last_chng_usrno
+		bzwrDstc : "ABC",
+		bzwrTtl : bzwr_ttl,
+		bzwrCntn : bzwr_cntn,
+		lastChngUsrno : last_chng_usrno
 	};
 	console.log(form);
 	

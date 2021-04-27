@@ -2,17 +2,18 @@ package jms.board.domain;
 
 import java.util.Date;
 
-public class JobVO {
+public class JobHisVO {
+	String frstRegDt;
 	String bzwrDstc;
 	String jobCd;
-	String sqno;
-	String bzwrSts; 
-	String bzwrRegDt; 
-	String bzwrCmplDt; 
-	String bzwrIndcChgr; 
-	String bzwrExcChgr; 
-	String bzwrTtl; 
-	String bzwrCntn; 
+	String sqno; 
+	String dtlSqno; 
+	String bzwrExcSts; 
+	String bzwrTrtmInfo; 
+	String bzwrIndcChgr;
+	String bzwrExcChgr;
+	String bzwrTrtmTtl; 
+	String bzwrTrtmCntn; 
 	String tempOne; 
 	String tempTwo; 
 	String remark; 
@@ -25,6 +26,12 @@ public class JobVO {
 	Date lastChngTmsp; 
 	String lastChngGuid; 
 	String lastChngUsrno;
+	public String getFrstRegDt() {
+		return frstRegDt;
+	}
+	public void setFrstRegDt(String frstRegDt) {
+		this.frstRegDt = frstRegDt;
+	}
 	public String getBzwrDstc() {
 		return bzwrDstc;
 	}
@@ -43,23 +50,23 @@ public class JobVO {
 	public void setSqno(String sqno) {
 		this.sqno = sqno;
 	}
-	public String getBzwrSts() {
-		return bzwrSts;
+	public String getDtlSqno() {
+		return dtlSqno;
 	}
-	public void setBzwrSts(String bzwrSts) {
-		this.bzwrSts = bzwrSts;
+	public void setDtlSqno(String dtlSqno) {
+		this.dtlSqno = dtlSqno;
 	}
-	public String getBzwrRegDt() {
-		return bzwrRegDt;
+	public String getBzwrExcSts() {
+		return bzwrExcSts;
 	}
-	public void setBzwrRegDt(String bzwrRegDt) {
-		this.bzwrRegDt = bzwrRegDt;
+	public void setBzwrExcSts(String bzwrExcSts) {
+		this.bzwrExcSts = bzwrExcSts;
 	}
-	public String getBzwrCmplDt() {
-		return bzwrCmplDt;
+	public String getBzwrTrtmInfo() {
+		return bzwrTrtmInfo;
 	}
-	public void setBzwrCmplDt(String bzwrCmplDt) {
-		this.bzwrCmplDt = bzwrCmplDt;
+	public void setBzwrTrtmInfo(String bzwrTrtmInfo) {
+		this.bzwrTrtmInfo = bzwrTrtmInfo;
 	}
 	public String getBzwrIndcChgr() {
 		return bzwrIndcChgr;
@@ -73,17 +80,17 @@ public class JobVO {
 	public void setBzwrExcChgr(String bzwrExcChgr) {
 		this.bzwrExcChgr = bzwrExcChgr;
 	}
-	public String getBzwrTtl() {
-		return bzwrTtl;
+	public String getBzwrTrtmTtl() {
+		return bzwrTrtmTtl;
 	}
-	public void setBzwrTtl(String bzwrTtl) {
-		this.bzwrTtl = bzwrTtl;
+	public void setBzwrTrtmTtl(String bzwrTrtmTtl) {
+		this.bzwrTrtmTtl = bzwrTrtmTtl;
 	}
-	public String getBzwrCntn() {
-		return bzwrCntn;
+	public String getBzwrTrtmCntn() {
+		return bzwrTrtmCntn;
 	}
-	public void setBzwrCntn(String bzwrCntn) {
-		this.bzwrCntn = bzwrCntn;
+	public void setBzwrTrtmCntn(String bzwrTrtmCntn) {
+		this.bzwrTrtmCntn = bzwrTrtmCntn;
 	}
 	public String getTempOne() {
 		return tempOne;
@@ -159,14 +166,19 @@ public class JobVO {
 	}
 	@Override
 	public String toString() {
-		return "JobVO [bzwrDstc=" + bzwrDstc + ", jobCd=" + jobCd + ", sqno=" + sqno + ", bzwrSts=" + bzwrSts
-				+ ", bzwrRegDt=" + bzwrRegDt + ", bzwrCmplDt=" + bzwrCmplDt + ", bzwrIndcChgr=" + bzwrIndcChgr
-				+ ", bzwrExcChgr=" + bzwrExcChgr + ", bzwrTtl=" + bzwrTtl + ", bzwrCntn=" + bzwrCntn + ", tempOne="
-				+ tempOne + ", tempTwo=" + tempTwo + ", remark=" + remark + ", chngDt=" + chngDt + ", chngTm=" + chngTm
-				+ ", delYn=" + delYn + ", frstRegTmsp=" + frstRegTmsp + ", frstRegGuid=" + frstRegGuid
-				+ ", frstRegUsrno=" + frstRegUsrno + ", lastChngTmsp=" + lastChngTmsp + ", lastChngGuid=" + lastChngGuid
-				+ ", lastChngUsrno=" + lastChngUsrno + "]";
+		return "JobHisVO [frstRegDt=" + frstRegDt + ", bzwrDstc=" + bzwrDstc + ", jobCd=" + jobCd + ", sqno=" + sqno
+				+ ", dtlSqno=" + dtlSqno + ", bzwrExcSts=" + bzwrExcSts + ", bzwrTrtmInfo=" + bzwrTrtmInfo
+				+ ", bzwrIndcChgr=" + bzwrIndcChgr + ", bzwrExcChgr=" + bzwrExcChgr + ", bzwrTrtmTtl=" + bzwrTrtmTtl
+				+ ", bzwrTrtmCntn=" + bzwrTrtmCntn + ", tempOne=" + tempOne + ", tempTwo=" + tempTwo + ", remark="
+				+ remark + ", chngDt=" + chngDt + ", chngTm=" + chngTm + ", delYn=" + delYn + ", frstRegTmsp="
+				+ frstRegTmsp + ", frstRegGuid=" + frstRegGuid + ", frstRegUsrno=" + frstRegUsrno + ", lastChngTmsp="
+				+ lastChngTmsp + ", lastChngGuid=" + lastChngGuid + ", lastChngUsrno=" + lastChngUsrno + "]";
 	}
+	
+	
+	
+	
+	
 	
 	
 	
